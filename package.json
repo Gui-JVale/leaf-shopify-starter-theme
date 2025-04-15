@@ -1,0 +1,11 @@
+{
+  "name": "leaf-shopify-starter",
+  "version": "1.0.0",
+  "description": "Starter theme for shopify using leaf-cli",
+  "scripts": {},
+  "author": "Gui J Vale",
+  "license": "ISC",
+  "dependencies": {
+    "leaf-cli-shopify-tools": "^0.1.1"
+  }
+}
