@@ -103,6 +103,34 @@
         content
         <button js-modal-close-trigger>Close Modal</button>
       </theme-modal>
+
+      <theme-accordions data-allow-multiple-open="false" js-accordion>
+        <div class="accordion-item" js-accordion-item>
+          <button class="accordion-header" aria-expanded="true" aria-controls="accordionID" js-accordion-header>
+            Title
+          </button>
+          <div id="accordionID" class="accordion-content" aria-hidden="false" js-accordion-content>Content</div>
+        </div>
+        <div class="accordion-item" js-accordion-item>
+          <button class="accordion-header" aria-expanded="false" aria-controls="accordionID2" js-accordion-header>
+            Title 2
+          </button>
+          <div id="accordionID2" class="accordion-content" aria-hidden="true" js-accordion-content>Content 2</div>
+        </div>
+        <div class="accordion-item" js-accordion-item>
+          <button class="accordion-header" aria-expanded="false" aria-controls="accordionID3" js-accordion-header>
+            Title 3
+          </button>
+          <div id="accordionID3" class="accordion-content" aria-hidden="true" js-accordion-content>Content 3</div>
+        </div>
+        <div class="accordion-item" js-accordion-item>
+          <button class="accordion-header" aria-expanded="false" aria-controls="accordionID4" js-accordion-header>
+            Title 4
+          </button>
+          <div id="accordionID4" class="accordion-content" aria-hidden="true" js-accordion-content>Content 4</div>
+        </div>
+      </theme-accordions>
+
       {{ content_for_layout }}
     </main>
 

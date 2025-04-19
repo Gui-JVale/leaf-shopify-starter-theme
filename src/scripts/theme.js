@@ -1,6 +1,9 @@
+import './global/shopify-common';
+
 import { utils } from './global/utils';
-import { ThemeModal } from './components/theme-modal';
-import { ThemeDrawer } from './components/theme-drawer';
+import { Modal } from './components/modal';
+import { Drawer } from './components/drawer';
+import { Accordions } from './components/accordions';
 
 // Here run the querySelector to figure out if the browser supports :focus-visible or not and run code based on it.
 try {
@@ -9,5 +12,6 @@ try {
   utils.a11y.focusVisiblePolyfill();
 }
 
-customElements.define('theme-modal', ThemeModal);
-customElements.define('theme-drawer', ThemeDrawer);
+customElements.define('theme-modal', Modal);
+customElements.define('theme-drawer', Drawer);
+customElements.define('theme-accordions', Accordions);

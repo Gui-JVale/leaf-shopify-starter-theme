@@ -1,6 +1,6 @@
 /**
  * ThemeModal
- *
+ * ----------------------------------------------------------------------------
  * A custom element for modal functionality with accessibility features.
  *
  * @emits modal:open
@@ -11,11 +11,12 @@
  *  ...
  *  <button js-modal-close-trigger>Close Modal</button>
  * </theme-modal>
+ *  <button js-modal-open-trigger>Open Modal</button>
  */
 
 import { OverlayComponent } from '../abstract/overlay-component';
 
-export class ThemeModal extends OverlayComponent {
+export class Modal extends OverlayComponent {
   constructor() {
     super({
       name: 'modal',

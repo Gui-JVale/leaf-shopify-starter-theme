@@ -1,6 +1,6 @@
 /**
  * ThemeDrawer
- *
+ * ----------------------------------------------------------------------------
  * A custom element for drawer functionality with accessibility features.
  *
  * @emits drawer:open
@@ -11,11 +11,12 @@
  *  ...
  *  <button js-drawer-close-trigger>Close Drawer</button>
  * </theme-drawer>
+ *  <button js-drawer-open-trigger>Open Drawer</button>
  */
 
 import { OverlayComponent } from '../abstract/overlay-component';
 
-export class ThemeDrawer extends OverlayComponent {
+export class Drawer extends OverlayComponent {
   constructor() {
     super({
       name: 'drawer',
