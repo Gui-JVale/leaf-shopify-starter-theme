@@ -30,6 +30,8 @@
 
     {{ content_for_header }}
 
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+
     <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
@@ -37,12 +39,70 @@
     </script>
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+  <body class="drawer-backdrop modal-backdrop">
+    <a class="skip-to-content-link button visually-hidden sr-only" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      <button js-drawer-open-trigger>Open Drawer</button>
+
+      <theme-drawer
+        id="Drawer"
+        data-open="[js-drawer-open-trigger]"
+        data-close="[js-drawer-close-trigger]"
+        data-position="right"
+      >
+        content
+        <button js-drawer-close-trigger>Close Drawer</button>
+      </theme-drawer>
+
+      <button js-drawer-open-left-trigger>Open Drawer Left</button>
+
+      <theme-drawer
+        id="DrawerLeft"
+        data-open="[js-drawer-open-left-trigger]"
+        data-close="[js-drawer-close-left-trigger]"
+        data-position="left"
+      >
+        content
+        <button js-drawer-close-left-trigger>Close Drawer</button>
+      </theme-drawer>
+
+      <button js-drawer-open-bottom-trigger>Open Drawer Bottom</button>
+
+      <theme-drawer
+        id="DrawerBottom"
+        data-open="[js-drawer-open-bottom-trigger]"
+        data-close="[js-drawer-close-bottom-trigger]"
+        data-position="bottom"
+      >
+        content
+        <button js-drawer-close-bottom-trigger>Close Drawer</button>
+      </theme-drawer>
+
+      <button js-drawer-open-top-trigger>Open Drawer Top</button>
+
+      <theme-drawer
+        id="DrawerTop"
+        data-open="[js-drawer-open-top-trigger]"
+        data-close="[js-drawer-close-top-trigger]"
+        data-position="top"
+      >
+        content
+        <button js-drawer-close-top-trigger>Close Drawer</button>
+      </theme-drawer>
+
+      <button js-modal-open-trigger>Open Modal</button>
+
+      <theme-modal
+        id="Modal"
+        data-open="[js-modal-open-trigger]"
+        data-close="[js-modal-close-trigger]"
+      >
+        content
+        <button js-modal-close-trigger>Close Modal</button>
+      </theme-modal>
       {{ content_for_layout }}
     </main>
 
@@ -67,5 +127,6 @@
         unavailable: `{{ 'products.product.unavailable' | t }}`,
       };
     </script>
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
   </body>
 </html>

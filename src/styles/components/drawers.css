@@ -1,0 +1,67 @@
+theme-drawer {
+  @apply hidden
+  fixed 
+  overflow-hidden 
+  w-full 
+  max-w-xl
+  bg-white 
+  transform
+  transition-all
+  duration-300
+  ease-in-out
+  z-10;
+}
+
+theme-drawer[data-position='top'],
+theme-drawer[data-position='bottom'] {
+  @apply w-screen
+  max-w-none
+  left-0;
+}
+
+theme-drawer[data-position='left'],
+theme-drawer[data-position='right'] {
+  @apply h-full
+  top-[env(safe-area-inset-top)]
+  bottom-[env(safe-area-inset-bottom)];
+}
+
+theme-drawer[data-position='top'] {
+  @apply top-0 -translate-y-full;
+}
+
+theme-drawer[data-position='left'] {
+  @apply left-0 -translate-x-full;
+}
+
+theme-drawer[data-position='right'] {
+  @apply right-0 translate-x-full;
+}
+
+theme-drawer[data-position='bottom'] {
+  @apply bottom-0 translate-y-full;
+}
+
+theme-drawer.open {
+  @apply block translate-y-0 translate-x-0;
+}
+
+.drawer-backdrop::after {
+  content: '';
+  @apply hidden
+  opacity-0
+  fixed
+  inset-0
+  w-full
+  h-full
+  bg-black
+  bg-opacity-60
+  transition-all
+  duration-300
+  ease-in-out;
+}
+
+.drawer-backdrop.drawer-open::after {
+  @apply block
+  opacity-100;
+}

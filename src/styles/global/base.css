@@ -1,0 +1,45 @@
+@layer base {
+  *:focus {
+    @apply outline-none;
+  }
+
+  .no-js:not(html) {
+    display: none !important;
+  }
+
+  html.no-js .no-js:not(html) {
+    display: block !important;
+  }
+
+  .no-js-inline {
+    display: none !important;
+  }
+
+  html.no-js .no-js-inline {
+    display: inline-block !important;
+  }
+
+  html.no-js .no-js-hidden {
+    display: none !important;
+  }
+
+  body.overlay-component-open {
+    @apply overflow-hidden;
+  }
+
+  .is-transitioning,
+  .is-transitioning::before,
+  .is-transitioning::after {
+    @apply block
+    visible !important;
+  }
+
+  .visually-hidden {
+    @apply absolute
+    overflow-hidden
+    whitespace-nowrap !important;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+  }
+}

@@ -1,0 +1,6 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/utilities';
+
+@import './global/base.css';
+@import './components/drawers.css';
+@import './components/modals.css';
