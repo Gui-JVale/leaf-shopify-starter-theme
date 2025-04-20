@@ -1,6 +1,12 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/utilities';
 
+@import 'swiper/swiper-bundle.min.css';
+@import 'swiper/modules/a11y-element.min.css';
+@import 'swiper/modules/navigation-element.min.css';
+@import 'swiper/modules/pagination.min.css';
+@import 'swiper/modules/pagination-element.min.css';
+
 @import './global/base.css';
 @import './components/drawers.css';
 @import './components/modals.css';
