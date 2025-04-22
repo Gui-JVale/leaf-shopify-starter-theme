@@ -2,9 +2,13 @@
   "name": "leaf-shopify-starter",
   "version": "1.0.0",
   "description": "Starter theme for shopify using leaf-cli",
-  "scripts": {},
+  "scripts": {
+    "dev": "leaf dev",
+    "build": "leaf build",
+    "deploy": "leaf deploy"
+  },
   "author": "Gui J Vale",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "leaf-cli-shopify-tools": "^0.2.2",
     "swiper": "^11.2.6"
