@@ -62,6 +62,8 @@
       "quantity": {
         "label": "Quantity",
         "input_label": "Quantity for {{ product }}",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}"
       },
       "share": "Share this product",
       "sold_out": "Sold out",

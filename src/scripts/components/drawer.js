@@ -15,6 +15,7 @@
  */
 
 import { OverlayComponent } from '../abstract/overlay-component';
+import { PUB_SUB_EVENTS } from '../global/pubsub';
 
 export class Drawer extends OverlayComponent {
   constructor() {
@@ -24,6 +25,7 @@ export class Drawer extends OverlayComponent {
       closeClasses: ['close'],
       bodyOpenClasses: ['drawer-open'],
       bodyCloseClasses: [],
+      openPubSubEvent: PUB_SUB_EVENTS.drawerOpen,
       backdropSelector: '.drawer-backdrop',
       backdropClasses: [],
     });

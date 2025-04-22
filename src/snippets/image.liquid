@@ -1,0 +1,62 @@
+{%- comment -%}
+  Image Snippet
+  ----------------------------------------------------------------------------
+
+  Image implementation that supports:
+  - Responsive images with different sizes/crops
+  - Lazy loading with option to load eagerly for LCP images
+  - Desktop/mobile image variants
+  - Image alt text
+
+  Parameters:
+  - image: Required - The image object (from settings, product, etc)
+  - image_desktop: Optional - Alternate image for desktop devices
+  - breakpoint: Optional - Breakpoint for the image (tablet, desktop, widescreen)
+  - loading: Optional - "lazy" (default) or "eager" for above-the-fold images\
+  - picture_classes: Optional - CSS classes for the picture tag
+  - img_classes: Optional - CSS classes for the img tag
+  - img_id: Optional - ID attribute for the img tag
+  - alt: Optional - Alt text (defaults to image.alt)
+  - max_width: Optional - Maximum width the image will be displayed at
+{%- endcomment -%}
+
+{% capture breakpoint_px %}{% render 'media-query', breakpoint: breakpoint, format: 'px' %}{% endcapture %}
+{% capture breakpoint_css %}{% render 'media-query', breakpoint: breakpoint, format: 'css' %}{% endcapture %}
+
+{%- liquid
+  # Set defaults
+  assign loading = loading | default: 'lazy'
+  assign img_alt = alt | default: image.alt | default: ''
+  assign break_widths = '300, 600, 750, 1024, 1280, 1440, 1920'
+  assign break_widths_array = break_widths | split: ','
+  assign default_max_width = '1920px'
+
+  if max_width == blank and image_desktop == blank
+    assign max_width = default_max_width
+  elsif max_width == blank
+    assign max_width = breakpoint_px
+  endif
+
+  assign img_classes = 'w-full ' | append: img_classes
+
+  assign image_url = image | image_url: width: max_width
+-%}
+
+<picture
+  class="picture {{ breakpoint }}{% if picture_classes != blank %} {{ picture_classes }}{% endif %}"
+  style="--aspect-ratio: {{ image.aspect_ratio }}; {% if image_desktop != blank %}--aspect-ratio-breakpoint: {{ image_desktop.aspect_ratio }}{% endif %}"
+>
+  {%- if image_desktop != blank -%}
+    <source
+      media="{{ breakpoint_css | strip }}"
+      srcset="
+        {% for width in break_widths_array %}
+          {{ image_desktop | image_url: width: width }} {{ width }}w,
+        {% endfor %}
+        {{ image_desktop | image_url: width: 1920 }}  1920w
+      "
+    >
+  {%- endif -%}
+
+  {{ image_url | image_tag: width: null, widths: break_widths, loading: loading, alt: img_alt, class: img_classes }}
+</picture>

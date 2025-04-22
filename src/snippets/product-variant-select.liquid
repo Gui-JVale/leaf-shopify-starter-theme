@@ -1,0 +1,26 @@
+{%- comment -%}
+  Product Master Select Snippet
+  ----------------------------------------------------------------------------
+  Renders a select element with all product variants
+
+  Parameters:
+  - variants: Required - The product variants
+  - id: Required - The select element id
+  - current_variant: Optional - The current variant to set initial state
+{%- endcomment -%}
+
+<select id="{{ id }}" name="id" class="no-js">
+  {% for variant in variants %}
+    <option
+      {% if variant == current_variant %}
+        selected="selected"
+      {% endif %}
+      {% unless variant.available %}
+        disabled="disabled"
+      {% endunless %}
+      value="{{ variant.id }}"
+    >
+      {{ variant.title }}
+    </option>
+  {% endfor %}
+</select>

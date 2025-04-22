@@ -14,6 +14,7 @@
  *  <button js-modal-open-trigger>Open Modal</button>
  */
 
+import { PUB_SUB_EVENTS } from '../global/pubsub';
 import { OverlayComponent } from '../abstract/overlay-component';
 
 export class Modal extends OverlayComponent {
@@ -24,6 +25,7 @@ export class Modal extends OverlayComponent {
       closeClasses: ['close'],
       bodyOpenClasses: ['modal-open'],
       bodyCloseClasses: [],
+      openPubSubEvent: PUB_SUB_EVENTS.modalOpen,
       backdropSelector: '.modal-backdrop',
       backdropClasses: [],
     });

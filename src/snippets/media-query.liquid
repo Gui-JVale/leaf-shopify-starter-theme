@@ -1,0 +1,53 @@
+{% comment %}
+  Media Query Snippet
+  ----------------------------------------------------------------------------
+
+  Returns a media query for a given breakpoint
+
+  Usage:
+  {% render 'media-query', breakpoint: 'tablet' %}
+
+  - breakpoint: tablet, desktop, widescreen
+  - format: 'css' | 'rem' | 'px'
+{% endcomment %}
+{% liquid
+  assign format = format | default: 'css'
+
+  assign breakpoint = breakpoint | default: 'tablet'
+
+  if format == 'css'
+    case breakpoint
+      when 'tablet'
+        assign breakpoint_value = '(min-width: 768px)'
+      when 'desktop'
+        assign breakpoint_value = '(min-width: 1024px)'
+      when 'widescreen'
+        assign breakpoint_value = '(min-width: 1440px)'
+      when 'extrawide'
+        assign breakpoint_value = '(min-width: 1920px)'
+    endcase
+  elsif format == 'rem'
+    case breakpoint
+      when 'tablet'
+        assign breakpoint_value = '48rem'
+      when 'desktop'
+        assign breakpoint_value = '64rem'
+      when 'widescreen'
+        assign breakpoint_value = '90rem'
+      when 'extrawide'
+        assign breakpoint_value = '120rem'
+    endcase
+  elsif format == 'px'
+    case breakpoint
+      when 'tablet'
+        assign breakpoint_value = '768px'
+      when 'desktop'
+        assign breakpoint_value = '1024px'
+      when 'widescreen'
+        assign breakpoint_value = '1440px'
+      when 'extrawide'
+        assign breakpoint_value = '1920px'
+    endcase
+  endif
+%}
+{{ breakpoint_value }}

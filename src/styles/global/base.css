@@ -42,4 +42,32 @@
     height: 1px;
     width: 1px;
   }
+
+  .picture img {
+    aspect-ratio: var(--aspect-ratio);
+  }
+
+  @media screen(tablet) {
+    .picture.tablet img {
+      aspect-ratio: var(--aspect-ratio-breakpoint, var(--aspect-ratio));
+    }
+  }
+
+  @media screen(desktop) {
+    .picture.desktop img {
+      aspect-ratio: var(--aspect-ratio-breakpoint, var(--aspect-ratio));
+    }
+  }
+
+  @media screen(widescreen) {
+    .picture.widescreen img {
+      aspect-ratio: var(--aspect-ratio-breakpoint, var(--aspect-ratio));
+    }
+  }
+
+  @media screen(extrawide) {
+    .picture.extrawide img {
+      aspect-ratio: var(--aspect-ratio-breakpoint, var(--aspect-ratio));
+    }
+  }
 }

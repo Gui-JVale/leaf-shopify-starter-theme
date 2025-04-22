@@ -149,4 +149,19 @@ export const utils = {
       return fn(...args);
     };
   },
+
+  handleize(string) {
+    return string
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/-$/, '')
+      .replace(/^-/, '');
+  },
+
+  fetchConfig(type = 'json') {
+    return {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: `application/${type}` },
+    };
+  },
 };

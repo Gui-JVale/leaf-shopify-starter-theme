@@ -10,6 +10,7 @@
  * @param {string[]} config.closeClasses - The classes to add when the overlay is closed.
  * @param {string[]} config.bodyOpenClasses - The classes to add when the body is open.
  * @param {string[]} config.bodyCloseClasses - The classes to add when the body is closed.
+ * @param {string} config.openPubSubEvent - The pubsub event to emit when the overlay is opened.
  * @param {string} config.backdropSelector - The selector for the backdrop element.
  * @param {string[]} config.backdropClasses - The classes to add when the backdrop is active.
  * @param {Object} config.attributes - The attributes to add to component on initialization. { 'data-test': 'test' }
@@ -172,6 +173,12 @@ export class OverlayComponent extends HTMLElement {
   }
 
   dispatchEvents() {
+    if (this.config.openPubSubEvent) {
+      publish(this.config.openPubSubEvent, {
+        id: this.id,
+        isOpen: this.isOpen,
+      });
+    }
     this.dispatchEvent(
       new CustomEvent(this.isOpen ? `${this.config.name}:open` : `${this.config.name}:close`, {
         bubbles: true,

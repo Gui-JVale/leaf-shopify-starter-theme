@@ -58,7 +58,6 @@ export class Carousel extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log('Carousel connected');
     this.setupConfig();
     if (this.shouldInitCarousel()) {
       this.initCarousel();
@@ -69,8 +68,7 @@ export class Carousel extends HTMLElement {
   setupConfig() {
     this.breakpoint = this.dataset.init ? config.breakpoints[this.dataset.init] : null;
     this.container = this.querySelector(this.selectors.container);
-    console.log('Container:', this.container);
-    console.log('Breakpoint:', this.breakpoint);
+
     if (!this.container) return;
 
     // Parse options from data attribute
@@ -85,26 +83,18 @@ export class Carousel extends HTMLElement {
   }
 
   disconnectedCallback() {
-    // Clean up event listeners
     window.removeEventListener('resize', this.handleResize);
 
-    // Destroy Swiper instance if it exists
-    if (this.carousel) {
+    if (this.carousel && typeof this.carousel.destroy === 'function') {
       this.carousel.destroy(true, true);
       this.carousel = null;
     }
   }
 
   initCarousel() {
-    console.log('Initializing carousel');
-    console.log('Carousel:', this.carousel);
-    // Don't initialize if already initialized or if Swiper isn't available
     if (this.carousel) return;
 
-    // Initialize Swiper
-    console.log(this.container.id);
     this.carousel = new Swiper(`#${this.container.id}`, this.options);
-    console.log('Carousel initialized:', this.carousel);
   }
 
   handleResize() {
